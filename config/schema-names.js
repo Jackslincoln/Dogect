@@ -1,5 +1,5 @@
 module.exports = {
-    users: 'users',
+    usuarios: 'usuarios',
     imagenes: 'imagenes',
     equipos: 'equipos',
     manadas: 'manadas',
@@ -7,5 +7,4 @@ module.exports = {
     roles: 'roles',
     notas: 'notas',
     huesos: 'huesos',
-    imagenes: 'imagenes',
 };

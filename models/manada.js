@@ -17,11 +17,11 @@ const manadas_schema = new Schema({
     },
     creador : {
         type: Schema.Types.ObjectId,
-        ref: schema_names.users
+        ref: schema_names.usuarios
     },
     integrantes: [{
         type: Schema.Types.ObjectId,
-        ref: schema_names.users
+        ref: schema_names.usuarios
     }],
     activo : {
         type: Schema.Types.Boolean,

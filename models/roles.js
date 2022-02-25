@@ -20,7 +20,7 @@ const roles_schema = new Schema({
     }],
     usuarios: [{
         type: Schema.Types.ObjectId,
-        ref: schema_names.users
+        ref: schema_names.usuarios
     }]
 },{
      collection: schema_names.roles

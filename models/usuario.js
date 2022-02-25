@@ -38,8 +38,8 @@ const user_schema = new Schema({
         ref: schema_names.manadas
     }]
 },{
-     collection: schema_names.users
+     collection: schema_names.usuarios
 });
-module.exports = mongoose.model(schema_names.users, user_schema);
+module.exports = mongoose.model(schema_names.usuarios, user_schema);
 
 

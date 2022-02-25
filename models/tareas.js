@@ -17,7 +17,7 @@ const tareas_schema = new Schema({
     },
     responsables: [{
         type: Schema.Types.ObjectId,
-        ref: schema_names.users
+        ref: schema_names.usuarios
     }],
     completada : {
         type: Schema.Types.Boolean,

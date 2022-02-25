@@ -17,15 +17,15 @@ const equipos_schema = new Schema({
     },
     creador : {
         type: Schema.Types.ObjectId,
-        ref: schema_names.users
+        ref: schema_names.usuarios
     },
     integrantes: [{
         type: Schema.Types.ObjectId,
-        ref: schema_names.users
+        ref: schema_names.usuarios
     }],
     manada : {
         type: Schema.Types.ObjectId,
-        ref: schema_names.manada
+        ref: schema_names.manadas
     },
     activo : {
         type: Schema.Types.Boolean,

@@ -25,7 +25,7 @@ const notas_schema = new Schema({
     },
     usuario: [{
         type: Schema.Types.ObjectId,
-        ref: schema_names.users
+        ref: schema_names.usuarios
     }],
     manada: [{
         type: Schema.Types.ObjectId,
