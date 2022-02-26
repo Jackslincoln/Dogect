@@ -1,13 +1,13 @@
 const manadas_schema = require('../models/manada');
 
-async function readmanada(correo){
-    let manada = await manadas_schema.findById(correo).exec()
+/**
+ * @param {string} id
+ * @returns {Promise<Manada>}
+ */
+async function readmanada(id){
+    let manada = await manadas_schema.findById(id).exec();
     return manada;
 }
-//readManadaByCreator
-//readManadaByUser 
-//readManadaById
-
 
 module.exports = {
     readmanada

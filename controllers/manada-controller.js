@@ -5,7 +5,8 @@ const {Request, Response} = require('express');
  * @param {Response} res
  */
 async function readmanada(req, res){
-    const manadas = await manada_service.readmanada();
+    const id = req.query.id;
+    const manadas = await manada_service.readmanada(id);
     res.json(manadas);
 }
 
