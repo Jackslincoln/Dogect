@@ -25,7 +25,7 @@ app.use(errorHandler);
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log('Servidor montado en puerto ' + port);
-})
+});
 
 // const port = 3000 || process.env.PORT;
 // db();

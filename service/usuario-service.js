@@ -8,17 +8,17 @@ class UserService {
     this.generate();
   }
   generate() {  //generar nuevos usuarios
-    // const limit = 100;  //creo que despues hay que quitarle el limite
-    // for (let index = 0; index < limit; index++)
-    //   this.users.push({
-    //     id: faker.datatype.uuid(),
-    //     name: faker.name.firstName(),
-    //     lastName: faker.name.lastName(),
-    //     email: faker.internet.email(),
-    //     pass: faker.internet.password(),
-    //     activo: true
-    //     //lo de equipos y manadas pero ahi no se muy bien el rollo
-    //   });
+    const limit = 100;  //creo que despues hay que quitarle el limite
+    for (let index = 0; index < limit; index++)
+      this.users.push({
+        id: faker.datatype.uuid(),
+        name: faker.name.firstName(),
+        lastName: faker.name.lastName(),
+        email: faker.internet.email(),
+        pass: faker.internet.password(),
+        activo: true
+        //lo de equipos y manadas pero ahi no se muy bien el rollo
+      });
   }
 
   find(size) {
@@ -46,8 +46,31 @@ class UserService {
     return user;
   }
 
-  update() {
+  update(id, changes) {
+    const index = this.users.findIndex(item => item.id === id);
+    console.log(index);
+    if (index === -1)
+      throw boom.notFound('Usuario no encontrado');
 
+    var currentUser = this.users[index];
+    this.users[index] = {
+      ...currentUser,
+      ...changes
+    };
+    return {
+      old: currentUser,
+      changed: this.users[index]
+    };
+  }
+
+  delete(id) {
+    const index = this.users.findIndex(item => item.id ===id);
+    if (index === -1)
+      throw boom.notFound('User not found');
+
+      var currentUser = this.users[index];
+      this.users.splice(index, 1);
+      return currentUser;
   }
 }
 

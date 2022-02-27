@@ -1,6 +1,8 @@
 const express = require('express');
 const UserService = require('../service/usuario-service');
 const service = new UserService;
+const validatorHandler = require('./../middlewares/validator.handler');
+const {createUserDto, updateUserDto, getUserId} = require('../dtos/users.dto');
 
 const router = express.Router();
 //const user_controller = require('../controllers/usuario-controller');
@@ -25,7 +27,7 @@ router.get('/', (req, res, next) => {
 });
 
 //CREATE USER
-router.post('/', (req,res) => {
+router.post('/', validatorHandler(createUserDto, 'body'), (req,res) => {
   const body = req.body;
   const user = service.create(body);
   res.json({
@@ -52,31 +54,37 @@ router.get('/:id', (req,res, next) => {
 });
 
 //UPDATE USUARIO
-router.patch('/:id', (req,res) => {
-  const { id } = req.params;
-  res.json({
-    'success': true,
-    'message': 'Se ha actualizado el siguiente registro.',
-    'data': {
-      id,
-      "name": "Alejandra Ghersi",
-      "email": "arca@gmail.com"
-    }
-  });
+router.patch('/:id', validatorHandler(getUserId, 'params'), validatorHandler(updateUserDto, 'body'), (req,res, next) => {
+  try {
+    const { id } = req.params;
+    const body = req.body;
+    const {old, changed} = service.update(id, body);
+    res.json({
+      'success': true,
+      'message': 'Se ha actualizado el siguiente registro.',
+      'data': {
+        "original": old,
+        "modified": changed
+      }
+    });
+  } catch(error) {
+    next(error)
+  }
 });
 
 //DELETE USUARIO
-router.delete('/:id', (req,res) => {
-  const { id } = req.params;
-  res.json({
-    'success': true,
-    'message': 'El siguiennte registro ha sido eliminado correctamente',
-    'data': {
-      id,
-      "name": "Alejandra Ghersi",
-      "email": "arca@gmail.com"
-    }
-  });
+router.delete('/:id', validatorHandler(getUserId, 'params'), (req,res, next) => {
+  try {
+    const { id } = req.params;
+    const user = service.delete(id);
+    res.json({
+      'success': true,
+      'message': 'El siguiennte registro ha sido eliminado correctamente',
+      'data': user
+    });
+  } catch(error) {
+    next(error)
+  }
 });
 
 module.exports = router;
