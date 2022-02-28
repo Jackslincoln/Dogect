@@ -7,7 +7,7 @@ const email = Joi.string().email({tlds: {allow: false}});
 const pass = Joi.string().min(4).max(8);
 
 const createUserDto = Joi.object({
-  name: name.required(),  //required() -> que es forzoso que incluyan estos datos
+  name: name.required(),
   lastName: lastName.required(),
   email: email.required(),
   pass: pass.required()
