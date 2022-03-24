@@ -1,19 +1,12 @@
 const express = require("express");
 const routerApi = require('./routes');
 const {logErrors, boomErrorHandler, errorHandler} = require('./middlewares/error.handler');
-
-//const db = require("./config/db");
+const db = require("./db");
+const { DBCONNECTION } = require('./consts.json');
 const app = express();
 const port = 3000;
 
-// app.use(require("./routes/equipos-route"));
-// app.use(require("./routes/huesos-route"));
-// app.use(require("./routes/imagenes-route"));
-// app.use(require("./routes/manada-route"));
-// app.use(require("./routes/notas-route"));
-// app.use(require("./routes/roles-route"));
-// app.use(require("./routes/tareas-route"));
-// app.use(require("./routes/usuario-route"));
+db(DBCONNECTION);
 
 app.use(express.json());
 routerApi(app);

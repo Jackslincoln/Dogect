@@ -1,7 +1,9 @@
 const faker = require('faker');
 const boom = require('@hapi/boom');
-//const user_schema = require('../models/usuario');
+const UserModel = require('../models/usuario.model');
 
+const NOTFOUNDCATALOG = 'No se encontró el usuario solicitado';
+const NOTFOUNDROWS = 'No hay usuarios registrados todavia';
 class UserService {
   constructor() {
     this.users = [];
@@ -72,28 +74,71 @@ class UserService {
       this.users.splice(index, 1);
       return currentUser;
   }
+
+  //DB METHODS
+  async findDB(limit, filter) {
+    let usersDB = await UserModel.find(filter);
+
+    if (!usersDB)
+        throw boom.notFound(NOTFOUNDCATALOG);
+    else if (usersDB.length <= 0)
+       throw boom.notFound(NOTFOUNDROWS);
+
+    usersDB = limit ? usersDB.filter((item, index) => item && index < limit) : usersDB;
+    return usersDB;
+  }
+
+  async createDB(data) {
+    const model = new UserModel(data);
+    await model.save();
+    return data;
+  }
+
+  async findOneDB(id) {
+    const user = await UserModel.findOne({
+      _id: id
+    });
+    if (user == undefined || user == null)
+      throw boom.notFound('No se encontró catálogo');
+    else if (user.length <= 0)
+      throw boom.notFound('No se encontó ningún registro');
+    return user;
+  }
+
+  async updateDB(id, changes) {
+    let user = await UserModel.findOne({
+      _id: id
+    });
+    let userOriginal = {
+      name: user.name,
+      lastName: user.lastName,
+      email: user.email
+    };
+    const { name, lastName, email } = changes;
+    user.name = name;
+    user.lastName = lastName;
+    user.email = email;
+    user.save();
+
+    return {
+      original: userOriginal,
+      actualizado: user
+    }
+  }
+
+  async deleteDB(id) {
+    let user = await UserModel.findOne({
+      _id: id
+    });
+    const { deletedCount } = await UserModel.deleteOne({
+      _id: id
+    });
+    if (deletedCount <= 0)
+      throw boom.notFound('El registro seleccionado no existe');
+    return user;
+  }
 }
 
-// /**
-//  * @returns {Promise<User[]>}
-//  */
-// async function read(){
-//     let users = await user_schema.find({}).exec();
-//     return users;
-// }
 
-// /**
-//  * @param {string} id
-//  * @returns {Promise<User>}
-//  */
-// async function readOne(id){
-//     let user = await user_schema.findById(id).exec();
-//     return user;
-// }
-
-// module.exports = {
-//     read,
-//     readOne
-// }
 
 module.exports = UserService;
