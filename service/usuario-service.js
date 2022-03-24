@@ -95,20 +95,36 @@ class UserService {
   }
 
   async findOneDB(id) {
-    const user = await UserModel.findOne({
-      _id: id
-    });
-    if (user == undefined || user == null)
-      throw boom.notFound('No se encontró catálogo');
-    else if (user.length <= 0)
-      throw boom.notFound('No se encontó ningún registro');
-    return user;
+    try {
+      // var regexTextId = "^[a-zA-Z0-9_]*$";
+      // var rgxId = new RegExp(regexTextId);
+      // if (!rgxId.test(id))
+      //   throw boom.badRequest('El id no tiene el formato correcto');
+
+      const user = await UserModel.findOne({
+        _id: id
+      });
+      if (user == undefined || user == null)
+        throw boom.notFound('No se encontró catálogo');
+      else if (user.length <= 0)
+        throw boom.notFound('No se encontó ningún registro');
+      return user;
+    } catch (err) {
+      throw boom.conflict("Ha ocurrido un error, favor de contactar con el administrador: " + err.message);
+    }
+
   }
 
   async updateDB(id, changes) {
     let user = await UserModel.findOne({
       _id: id
     });
+
+    if (user == undefined || user == null)
+      throw boom.notFound('No se encontró catálogo');
+    else if (user.length <= 0)
+      throw boom.notFound('No se encontó ningún registro');
+
     let userOriginal = {
       name: user.name,
       lastName: user.lastName,

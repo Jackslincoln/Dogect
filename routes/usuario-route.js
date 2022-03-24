@@ -25,7 +25,7 @@ router.get('/', async (req, res, next) => {
 //CREATE USER
 router.post('/', validatorHandler(createUserDto, 'body'), async (req,res) => {
   const body = req.body;
-  const user = service.create(body);
+  const user = await service.createDB(body);
   res.json({
     'success': true,
     'message': 'Usuario creado exitosamente',
@@ -37,7 +37,7 @@ router.post('/', validatorHandler(createUserDto, 'body'), async (req,res) => {
 router.get('/:id', async (req,res, next) => {
   try {
     const {id} = req.params;
-    const user = service.findOne(id);
+    const user = await service.findOneDB(id);
     res.json({
       'success': true,
       'message': 'Este es el usuario encontrado',
@@ -54,13 +54,13 @@ router.patch('/:id', validatorHandler(getUserId, 'params'), validatorHandler(upd
   try {
     const { id } = req.params;
     const body = req.body;
-    const {old, changed} = service.update(id, body);
+    const {original, actualizado} = await service.updateDB(id, body);
     res.json({
       'success': true,
       'message': 'Se ha actualizado el siguiente registro.',
       'data': {
-        "original": old,
-        "modified": changed
+        "original": original,
+        "modified": actualizado
       }
     });
   } catch(error) {
@@ -72,7 +72,7 @@ router.patch('/:id', validatorHandler(getUserId, 'params'), validatorHandler(upd
 router.delete('/:id', validatorHandler(getUserId, 'params'), async (req,res, next) => {
   try {
     const { id } = req.params;
-    const user = service.delete(id);
+    const user = await service.deleteDB(id);
     res.json({
       'success': true,
       'message': 'El siguiennte registro ha sido eliminado correctamente',

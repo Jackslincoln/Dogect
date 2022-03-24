@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const id = Joi.string();
+const id = Joi.string().alphanum();
 const name = Joi.string().alphanum().min(3).max(15);
 const lastName = Joi.string().alphanum().min(3).max(15);
 const email = Joi.string().email({tlds: {allow: false}});
