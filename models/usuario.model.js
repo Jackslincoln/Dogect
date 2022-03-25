@@ -9,9 +9,9 @@ const userSchema = new Schema({
   email: String,
   password: String,
   image: String,
-  active: Boolean
-  // equipos: ObjectId,
-  // manadas: ObjectId
+  active: Boolean,
+  manadas: Array
+  // equipos: Array
 });
 const model = mongoose.model('users', userSchema);
 module.exports = model;

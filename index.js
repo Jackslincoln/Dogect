@@ -20,8 +20,3 @@ app.listen(port, () => {
   console.log('Servidor montado en puerto ' + port);
 });
 
-// const port = 3000 || process.env.PORT;
-// db();
-// app.listen(port, () =>{
-//     console.log(`Servidor montado en puerto ${port}`);
-// });

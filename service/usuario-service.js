@@ -75,7 +75,7 @@ class UserService {
       return currentUser;
   }
 
-  //DB METHODS
+  //----- DB METHODS -----
   async findDB(limit, filter) {
     let usersDB = await UserModel.find(filter);
 
@@ -128,12 +128,20 @@ class UserService {
     let userOriginal = {
       name: user.name,
       lastName: user.lastName,
-      email: user.email
+      email: user.email,
+      password: user.password,
+      image: user.image,
+      active: user.active,
+      manadas: user.manadas,
     };
-    const { name, lastName, email } = changes;
+    const { name, lastName, email, password, image, active, manadas } = changes;
     user.name = name;
     user.lastName = lastName;
     user.email = email;
+    user.password = password;
+    user.image = image;
+    user.active = active;
+    user.manadas = manadas;
     user.save();
 
     return {

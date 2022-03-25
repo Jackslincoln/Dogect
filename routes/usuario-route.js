@@ -1,8 +1,10 @@
 const express = require('express');
 const UserService = require('../service/usuario-service');
+const ManadasService = require('../service/manada-service');
 const service = new UserService;
+const manadasService = new ManadasService;
 const validatorHandler = require('./../middlewares/validator.handler');
-const {createUserDto, updateUserDto, getUserId} = require('../dtos/users.dto');
+const {createUserDto, updateUserDto, getUserId, getUserManadasId} = require('../dtos/users.dto');
 
 const router = express.Router();
 
@@ -34,7 +36,7 @@ router.post('/', validatorHandler(createUserDto, 'body'), async (req,res) => {
 });
 
 //GET USER BY ID
-router.get('/:id', async (req,res, next) => {
+router.get('/:id', validatorHandler(getUserId, 'params'), async (req,res, next) => {
   try {
     const {id} = req.params;
     const user = await service.findOneDB(id);
@@ -46,7 +48,6 @@ router.get('/:id', async (req,res, next) => {
   } catch(error) {
     next(error);
   }
-
 });
 
 //UPDATE USUARIO
@@ -80,6 +81,28 @@ router.delete('/:id', validatorHandler(getUserId, 'params'), async (req,res, nex
     });
   } catch(error) {
     next(error)
+  }
+});
+
+//OBTENER LAS MANADAS DE UN USUARIO
+router.get('/:idUser/manadas', validatorHandler(getUserManadasId, 'params'), async (req,res, next) => {
+  try {
+    const { idUser } = req.params;
+    const user = await service.findOneDB(idUser);
+    const { manadas } = user;
+    const listOfManadas = await manadasService.findDB(0, {
+      _id: { $in: manadas }
+    });
+    res.json({
+      'success': true,
+      'message': 'Estas son las manadas encontradas:',
+      'data': {
+        'user': user,
+        'manadas': listOfManadas
+      }
+    });
+  } catch(error) {
+    next(error);
   }
 });
 
