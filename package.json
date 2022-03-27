@@ -4,9 +4,9 @@
   "description": "El organizador de tareas de perros",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack-dev-server",
+    "build": "webpack",
+    "lint": "standard"
   },
   "repository": {
     "type": "git",
@@ -19,18 +19,30 @@
   },
   "homepage": "https://github.com/Jackslincoln/Dogect#readme",
   "dependencies": {
+    "-": "^0.0.1",
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
     "@hapi/boom": "^9.1.4",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.4",
     "express": "^4.17.3",
     "joi": "^17.6.0",
     "mongodb": "^4.4.0",
-    "mongoose": "^6.2.8"
+    "mongoose": "^6.2.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-prettier": "^4.0.0",
     "faker": "^5.5.3",
-    "nodemon": "^2.0.15"
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.15",
+    "standard": "^16.0.4",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
   }
 }
