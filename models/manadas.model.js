@@ -7,9 +7,10 @@ const manadaSchema = new Schema({
   name: String,
   description: String,
   image: String,
-  activo: Boolean
-  //id del creador
+  creator: mongoose.Types.ObjectId,
   //los integrantes
+  activo: Boolean,
+  equipos: Array
 });
 const model = mongoose.model('manadas', manadaSchema);
 module.exports = model;

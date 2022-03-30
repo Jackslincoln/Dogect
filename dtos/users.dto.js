@@ -2,12 +2,13 @@ const Joi = require('joi');
 
 const id = Joi.string().alphanum();
 const name = Joi.string().alphanum().min(3).max(15);
-const lastName = Joi.string().alphanum().min(3).max(15);
+const lastName = Joi.string().min(3).max(15);
 const email = Joi.string().email({tlds: {allow: false}});
 const password = Joi.string().min(4).max(8);
 const image = Joi.string();
 const active = Joi.boolean();
 const listOfManadas = Joi.array();
+const listOfEquipos = Joi.array();
 
 const createUserDto = Joi.object({
   name: name.required(),
@@ -16,7 +17,8 @@ const createUserDto = Joi.object({
   password: password.required(),
   image: image,
   active: active,
-  manadas: listOfManadas
+  manadas: listOfManadas,
+  equipos: listOfEquipos
 });
 
 const updateUserDto = Joi.object({
@@ -26,7 +28,8 @@ const updateUserDto = Joi.object({
   password: password,
   image: image,
   active: active,
-  manadas: listOfManadas
+  manadas: listOfManadas,
+  equipos: listOfEquipos
 });
 
 const getUserId = Joi.object({
@@ -37,4 +40,8 @@ const getUserManadasId = Joi.object({
   idUser: id.required(),
 });
 
-module.exports = {createUserDto, updateUserDto, getUserId, getUserManadasId};
+const getUserEquiposId = Joi.object({
+  idUser: id.required()
+});
+
+module.exports = {createUserDto, updateUserDto, getUserId, getUserManadasId, getUserEquiposId};

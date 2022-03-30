@@ -106,5 +106,7 @@ router.get('/:idUser/manadas', validatorHandler(getUserManadasId, 'params'), asy
   }
 });
 
+//OBTENER LOS EQUIPOS DE UN USUARIO (NO SE SI SE OCUPE)
+
 module.exports = router;
 //module.exports = app;

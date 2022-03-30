@@ -3,6 +3,7 @@ const routerApi = require('./routes');
 const {logErrors, boomErrorHandler, errorHandler} = require('./middlewares/error.handler');
 const db = require("./db");
 const { DBCONNECTION } = require('./consts.json');
+
 const app = express();
 const port = 3000;
 

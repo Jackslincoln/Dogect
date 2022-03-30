@@ -1,38 +1,77 @@
-const EquipoService = require('../service/equipos-service');
-const service = new EquipoService;
-const validatorHandler = require('./../middlewares/validator.handler');
-
-
-//const equipos_controller = require('../controllers/equipos-controller');
 const express = require('express');
+const EquipoService = require('../service/equipos-service');
+const validatorHandler = require('./../middlewares/validator.handler');
+const { createEquipoDto, updateEquipoDto, getEquipoDto } = require('../dtos/equipos.dto');
+
+const service = new EquipoService;
 const router = express.Router();
 
-//app.get('/equipos.readequipos', equipos_controller.readequipos);
+//OBTENER TODOS LOS EQUIPOS
+router.get('/', async (req, res, next) => {
+  try {
+    const { limit } = req.body;
+    const filter = req.body;
+    const data = await service.findDB(limit, filter);
+    res.json({
+      success: true,
+      message: 'Listo',
+      data: data
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+//GET EQUIPO BY ID -> (se podria usar para un buscador????)
+router.get('/:id', validatorHandler(getEquipoDto, 'params'), async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const data = await service.findOneDB(id);
+    res.json({
+      success: true,
+      message: 'Listo',
+      data: data
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 
 //CREAR EQUIPO
-router.post('/', validatorHandler(createTeamDto, 'body'), (req,res) => {
-    const body = req.body;
-    const team = service.createTeam(body);
+router.post('/', validatorHandler(createEquipoDto, 'body'), async (req, res, next) => {
+  const body = req.body;
+  try {
+    const data = await service.createDB(body);
     res.json({
-      'success': true,
-      'message': 'Equipo creado exitosamente',
-      'data': team
+      success: true,
+      message: 'Listo',
+      data: data
     });
+  } catch (error) {
+    next(error);
+  }
+});
+
+//UPDATE
+router.patch('/:id',
+  validatorHandler(getEquipoDto, 'params'),
+  validatorHandler(updateEquipoDto, 'body'),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const body = req.body;
+      const data = await service.update(id, body);
+      res.json(data);
+    } catch (error) {
+      next(error);
+    }
   });
 
 //ELIMINAR EQUIPO
-router.delete('/:id', validatorHandler(getTeamId, 'params'), (req,res, next) => {
-    try {
-      const { id } = req.params;
-      const team = service.deleteTeam(id);
-      res.json({
-        'success': true,
-        'message': 'El siguiente equipo ha sido eliminado correctamente',
-        'data': team
-      });
-    } catch(error) {
-      next(error)
-    }
-  });
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+  const resp = await service.delete(id);
+  res.json(resp);
+});
 
 module.exports = router;

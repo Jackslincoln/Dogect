@@ -133,6 +133,7 @@ class UserService {
       image: user.image,
       active: user.active,
       manadas: user.manadas,
+      //equipos: user.equipos //no se si deba traer tambien los equipos
     };
     const { name, lastName, email, password, image, active, manadas } = changes;
     user.name = name;
@@ -142,6 +143,7 @@ class UserService {
     user.image = image;
     user.active = active;
     user.manadas = manadas;
+    //user.equipos = equipos;
     user.save();
 
     return {

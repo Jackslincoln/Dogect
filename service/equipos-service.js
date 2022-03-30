@@ -1,52 +1,56 @@
 //const equipos_schema = require('../models/equipos');
 const faker = require('faker');
 const boom = require('@hapi/boom');
+const Model = require('../models/equipos.model');
 
 class EquipoService {
     constructor() {
       this.equipos = [];
       this.generate();
     }
-    /*generate() {  //generar nuevos usuarios
-      const limit = 100;  //creo que despues hay que quitarle el limite
-      for (let index = 0; index < limit; index++)
+
+    generate() {
+      const limit = 100;
+      for (let index = 0; index < limit; index++) {
         this.equipos.push({
           id: faker.datatype.uuid(),
-          name: faker.name.firstName(),
-          lastName: faker.name.lastName(),
-          email: faker.internet.email(),
-          pass: faker.internet.password(),
+          name: faker.name.title(),
+          description: faker.lorem.paragraph(),
+          image: faker.image.imageUrl(),
+          creator: faker.datatype.uuid(),
           activo: true
-          //lo de equipos y manadas pero ahi no se muy bien el rollo
         });
-    }*/
-  
-
-  
-    createTeam(data) {
-      const newTeam = {
-        id: faker.datatype.uuid(),
-        ...data
       }
-      this.equipos.push(newTeam);
-      return newTeam;
     }
-  
-  
-    deleteTeam(id) {
-      const index = this.equipos.findIndex(item => item.id ===id);
-      if (index === -1)
-        throw boom.notFound('Equipo no encontrado');
-  
-        var currentTeam = this.equipos[index];
-        this.equipos.splice(index, 1);
-        return currentTeam;
-    }
-  }
 
-/*async function readequipos(){
-    let equipos = await equipos_schema.find({}).exec();
-    return equipos;
-}*/
+    async createDB(data) {
+      const model = new Model(data);
+      model.save();
+      return data;
+    }
+
+    async findDB(limit, filter) {
+      let equiposDB = await Model.find(filter);
+      equiposDB = limit ? equiposDB.filter((item, index) => item && index < limit) : equiposDB;
+
+      if (equiposDB == undefined || equiposDB == null)
+        throw boom.notFound('No se encontró catálogo');
+      else if (equiposDB.length <= 0)
+        throw boom.notFound('No se encontró ningún registro');
+
+      return equiposDB;
+    }
+
+    async findOneDB(id) {
+      const equipo = await Model.findOne({
+        _id: id
+      });
+      if (equipo == undefined || equipo == null)
+        throw boom.notFound('No se encontró catálogo');
+      else if (equipo.length <= 0)
+        throw boom.notFound('No se encontró ningún registro');
+      return equipo;
+    }
+}
 
 module.exports = EquipoService;
