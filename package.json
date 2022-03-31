@@ -1,0 +1,36 @@
+{
+  "name": "dogect_git",
+  "version": "1.0.0",
+  "description": "El organizador de tareas de perros",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jackslincoln/Dogect.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jackslincoln/Dogect/issues"
+  },
+  "homepage": "https://github.com/Jackslincoln/Dogect#readme",
+  "dependencies": {
+    "@hapi/boom": "^9.1.4",
+    "babel-eslint": "^10.1.0",
+    "express": "^4.17.3",
+    "joi": "^17.6.0",
+    "mongodb": "^4.4.0",
+    "mongoose": "^6.2.8"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.4.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "faker": "^5.5.3",
+    "nodemon": "^2.0.15"
+  }
+}
