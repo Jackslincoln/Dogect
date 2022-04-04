@@ -1,26 +1,33 @@
 import React from 'react';
-import {Button, Col, Nav, Image, img, Form, Navbar, Container} from 'react-bootstrap';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {} from '@fortawesome/free-solid-svg-icons';
+import {Ulx, Lix, Lix2, A, A2, Img, Body, Button1, Button2, Divbuttons} from './styles';
+//import {} from '@fortawesome/free-solid-svg-icons';
 //import logotipo from '/images/logotipo.png'
 
 export const Navbarl = (
 {
 	//Estos son los default
-	iconName="tv",
-	color="primary",
-	text="Categoria",
-	path="https://www.google.com"
+	texto1="ENTRA",
+    texto2="REGÍSTRATE",
+    path="http://www.google.com",
+    path2="http://wwwyoutube.com"
 }
 ) =>
 (
-    <Navbar bg="light" expand="lg">
-        <Container>
-            <Navbar.Collapse className="justify-content-end">
-               <Button variant="light">Light</Button>
-            </Navbar.Collapse>
-        </Container>
-    </Navbar>
+    
+ 
+        <div>        
+            <Ulx>
+                <Lix><Img src="https://i.imgur.com/CZPzCt0.png"></Img></Lix>
+                <Lix2>
+                    <Divbuttons>
+                    <Button1 href={path}>{texto1}</Button1>
+                    <Button2 href={path2}>{texto2}</Button2>
+                    </Divbuttons>
+                    
+                </Lix2>    
+            </Ulx>
+        </div>
+   
     
 	
     

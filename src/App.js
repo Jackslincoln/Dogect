@@ -1,8 +1,16 @@
 import React from "react";
 import { ListOfCategories } from "./listOfCategories";
 import { Navbarl } from "./navbar";
+import { Landing } from "./landing";
 
 
 export const App = () => (
-    <Navbarl/>
+    <div>
+        <Navbarl/>
+        <div>
+            <Landing/>
+        </div>
+    </div>
+    
+    
 );
