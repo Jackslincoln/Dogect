@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Col, Container, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faPen, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { Manada } from './../manada/manada';
 import ManadaList from './../manada/manadaList';
 
@@ -39,12 +39,12 @@ class HomePage extends React.Component {
                 >
                   <Container>
                     <Row className='d-flex justify-content-center'>
-                      <Col md={5} style={{padding: "15px"}}>
+                      <Col md={8} style={{padding: "15px"}}>
                         <img src="https://imgur.com/UU2uLQF.png" class="img-fluid" alt="Responsive image" />
                       </Col>
                     </Row>
                     <Row className='justify-content-center'>
-                      <b style={{fontSize: "30px", color: "#333333"}}>Nombre de Usuario</b>
+                      <b style={{fontSize: "30px", color: "#414141"}}>Nombre de Usuario</b>
                       <p style={{color: "#949494"}}># manadas</p>
                       <Col md={8} style={{marginBottom: "20px"}}>
                         <Button color='warning' outline onClick={this.toggle}>
@@ -59,12 +59,12 @@ class HomePage extends React.Component {
 
             <Col md={9} style={{marginBottom: "130px"}}>
               <Row>
-                <Col md={4} className="d-flex align-items-start" style={{padding: "20px", marginLeft: "60px"}}>
-                  <b  style={{fontSize: "35px", color: "#333333"}}>Mis manadas</b>
+                <Col md={4} className="d-flex align-items-start" style={{padding: "20px", marginLeft: "60px", marginTop:"30px"}}>
+                  <b  style={{fontSize: "36px", color: "#333333"}}>Mis manadas</b>
                 </Col>
-                <Col md={5} className="d-flex align-items-start" style={{padding: "30px"}}>
+                <Col md={5} className="d-flex align-items-start" style={{padding: "30px", marginTop: "30px"}}>
                   <Button className='btn-sm' color='warning' outline>
-                    <FontAwesomeIcon icon={faUsers} /> Editar perfil
+                    <FontAwesomeIcon icon={faUserPlus} /> Crear una manada
                   </Button>
                 </Col>
                 <Col md={2} className="d-flex align-items-start" style={{marginTop: "-50px"}}>
@@ -73,7 +73,7 @@ class HomePage extends React.Component {
                   </Button>
                 </Col>
 
-                <Row style={{marginTop: "10px"}}>
+                <Row style={{marginTop: "30px"}}>
                   <Container>
                     <Col>
                       <Container>
