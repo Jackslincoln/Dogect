@@ -4,7 +4,7 @@ import styled from 'styled-components';
 <link href="//db.onlinewebfonts.com/c/05e476e067ffef74ca5686f229c40a63?family=PingFang+SC" rel="stylesheet" type="text/css"/>
 
 export const Ulx = styled.div`
-    
+
     top:0;
     list-style-type: none;
     margin: 0;
@@ -21,11 +21,12 @@ export const Body = styled.div`
 `;
 
 export const Img = styled.img`
-    display: block;
+    display: block; 
     width:11%;
     height:auto;
     background-color: none;
     margin-left: 120px;
+    margin-top: 5px;
     
 `;
 
@@ -52,6 +53,7 @@ export const Divbuttons = styled.div`
 `
 
 export const Button1 = styled.button`
+    font-size: 12px;
     font-family: Arial, Helvetica, sans-serif;
     display: inline;
     flex-direction: column;
@@ -76,6 +78,7 @@ export const Button1 = styled.button`
 `
 
 export const Button2 = styled.button`
+    font-size: 12px;
     font-family: Arial, Helvetica, sans-serif;
     display: inline;
     flex-direction: column;

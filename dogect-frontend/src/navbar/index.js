@@ -1,6 +1,6 @@
 import React from 'react';
 import {Ulx, Lix, Lix2, Img, Button1, Button2, Divbuttons} from './styles';
-//import {} from '@fortawesome/free-solid-svg-icons';
+
 //import logotipo from '/images/logotipo.png'
 
 

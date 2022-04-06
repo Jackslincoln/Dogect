@@ -9,10 +9,12 @@ import HomePage from './components/pages/HomePage';
 import LoginPage from './components/pages/LoginPage';
 import SignupPage from "./components/pages/SignupPage";
 
+import Sidebarx from './sidebar/index';
 
 function App() {
   return (
     <div className="App">
+      <Navbarl/>
      <Router>
       <Routes>
         <Route exact path="/" element={<HomePage/>}></Route>
