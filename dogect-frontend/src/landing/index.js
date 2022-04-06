@@ -11,7 +11,7 @@ export const Landing = (
 ) =>
 (
     <div>
-        <Fondo img={"https://i.imgur.com/Uq0iB4d.jpeg"}>
+        <Fondo img={"https://imgur.com/Bb1Flul.jpeg"}>
             <Centro>
                 <Title>Dogect</Title>
                 <Subtitle>Descubre la nueva forma de planificar tus proyectos</Subtitle>

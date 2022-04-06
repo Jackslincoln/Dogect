@@ -14,7 +14,7 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <div className='bg-image' style={{backgroundImage: "url('https://imgur.com/Uq0iB4d.jpg')"}}>
+      <div className='bg-image' style={{backgroundImage: "url('https://imgur.com/Bb1Flul.jpg')"}}>
         <Container>
           <Row style={{marginBottom: "10%"}}>
             <Col>
@@ -25,12 +25,13 @@ class LoginPage extends React.Component {
               </Link>
             </Col>
           </Row>
+
           <Row className='d-flex justify-content-center'>
             <Col md={5}>
-              <Row className="d-flex justify-content-center" style={{marginBottom: "60px"}}>
+              <Row className="d-flex justify-content-center" style={{marginBottom: "70px"}}>
                 <img src="https://imgur.com/gzXMzZj.png" className='img-fluid' alt="Responsive image" style={{width: "15%"}}/>
               </Row>
-              <Row className="justify-content-center" style={{marginBottom: "50px"}}>
+              <Row className="justify-content-center" style={{marginBottom: "40px"}}>
                   <Input type="text" className='form-control form-rounded' placeholder='@ Correo...' style={{borderRadius: "20px", width:"80%", paddingLeft: "30px", paddingRight: "30px", paddingTop: "10px", paddingBottom: "10px", fontSize: "14px", marginBottom: "20px"}}></Input>
                   <Input type="password" className='form-control form-rounded' placeholder='⌨ Contraseña...' style={{borderRadius: "20px", width:"80%", paddingLeft: "30px", paddingRight: "30px", paddingTop: "10px", paddingBottom: "10px", fontSize: "14px", marginBottom: "20px"}}></Input>
               </Row>
@@ -40,9 +41,9 @@ class LoginPage extends React.Component {
                     Iniciar sesión
                   </Button>
                 </Link>
-                <Label>
+                <Label style={{marginTop:"5px"}}>
                 Aún no tienes cuenta?
-                <Link style={{color:"#C3B029"}} to={"/"}> Regístrate</Link>
+                <Link style={{color:"#C3B029"}} to={"/signup"}> Regístrate</Link>
               </Label>
               </Row>
             </Col>
