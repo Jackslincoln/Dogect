@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbarl, EntraClick} from "./navbar";
 import { Landing } from "./landing";
 import { Sidebar } from "./sidebar";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import HomePage from './components/pages/HomePage';
+import {HomePage} from './components/pages/HomePage';
 import LoginPage from './components/pages/LoginPage';
 import SignupPage from "./components/pages/SignupPage";
 
@@ -21,6 +21,8 @@ function App() {
         <Route exact path="/signup" element={<SignupPage/>}></Route>
       </Routes>
      </Router>
+
+
     </div>
   );
 }

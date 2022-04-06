@@ -29,45 +29,47 @@ class SignupPage extends React.Component {
 
           <Row className='d-flex justify-content-center'>
             <Col md={4}>
-              <Row style={{marginBottom:"20px"}}>
-                <Col md={2}>
-                  <FontAwesomeIcon icon={faUser} style={{height:"50%", color:"white"}}/>
-                </Col>
-                <Col md={10} className="d-flex justify-content-left">
-                  <Label style={{fontWeight:"bold", fontSize:"24px", color:"white"}}> Crea grupos</Label>
-                </Col>
-                <Row style={{paddingLeft:"80px", marginTop:"-10px"}}>
-                    <p style={{textAlign:"left", fontSize:"14px", color:"white", paddingRight:"30px"}}>
-                      Varios pueden trabajar en algo diferente, no todos tienen que centrarse en los mismo.
-                    </p>
+              <Container>
+                <Row style={{marginBottom:"20px"}}>
+                  <Col md={2}>
+                    <FontAwesomeIcon icon={faUser} style={{height:"50%", color:"white"}}/>
+                  </Col>
+                  <Col md={10} className="d-flex justify-content-left">
+                    <Label style={{fontWeight:"bold", fontSize:"24px", color:"white"}}> Crea grupos</Label>
+                  </Col>
+                  <Row style={{paddingLeft:"80px", marginTop:"-10px"}}>
+                      <p style={{textAlign:"left", fontSize:"14px", color:"white", paddingRight:"30px"}}>
+                        Varios pueden trabajar en algo diferente, no todos tienen que centrarse en los mismo.
+                      </p>
+                  </Row>
                 </Row>
-              </Row>
-              <Row style={{marginBottom:"20px"}}>
-                <Col md={2}>
-                    <FontAwesomeIcon icon={faCalendarCheck} style={{height:"50%", color:"white"}}/>
-                  </Col>
-                  <Col md={10} className="d-flex justify-content-left">
-                    <Label style={{fontWeight:"bold", fontSize:"24px", color:"white"}}> Analiza el proceso</Label>
-                  </Col>
-                  <Row style={{paddingLeft:"80px", marginTop:"-10px"}}>
-                      <p style={{textAlign:"left", fontSize:"14px", color:"white", paddingRight:"30px"}}>
-                      Añade fechas a las tareas, nunca sucumbirás ante el mounstro de la procrastinación!
-                      </p>
-                  </Row>
-              </Row>
-              <Row style={{marginBottom:"20px"}}>
-                <Col md={2}>
-                    <FontAwesomeIcon icon={faFileEdit} style={{height:"50%", color:"white"}}/>
-                  </Col>
-                  <Col md={10} className="d-flex justify-content-left">
-                    <Label style={{fontWeight:"bold", fontSize:"24px", color:"white"}}> Crea notas</Label>
-                  </Col>
-                  <Row style={{paddingLeft:"80px", marginTop:"-10px"}}>
-                      <p style={{textAlign:"left", fontSize:"14px", color:"white", paddingRight:"30px"}}>
-                        No volverás a perderte en instrucciones que no recuerdas.
-                      </p>
-                  </Row>
-              </Row>
+                <Row style={{marginBottom:"20px"}}>
+                  <Col md={2}>
+                      <FontAwesomeIcon icon={faCalendarCheck} style={{height:"50%", color:"white"}}/>
+                    </Col>
+                    <Col md={10} className="d-flex justify-content-left">
+                      <Label style={{fontWeight:"bold", fontSize:"24px", color:"white"}}> Analiza el proceso</Label>
+                    </Col>
+                    <Row style={{paddingLeft:"80px", marginTop:"-10px"}}>
+                        <p style={{textAlign:"left", fontSize:"14px", color:"white", paddingRight:"30px"}}>
+                        Añade fechas a las tareas, nunca sucumbirás ante el mounstro de la procrastinación!
+                        </p>
+                    </Row>
+                </Row>
+                <Row style={{marginBottom:"20px"}}>
+                  <Col md={2}>
+                      <FontAwesomeIcon icon={faFileEdit} style={{height:"50%", color:"white"}}/>
+                    </Col>
+                    <Col md={10} className="d-flex justify-content-left">
+                      <Label style={{fontWeight:"bold", fontSize:"24px", color:"white"}}> Crea notas</Label>
+                    </Col>
+                    <Row style={{paddingLeft:"80px", marginTop:"-10px"}}>
+                        <p style={{textAlign:"left", fontSize:"14px", color:"white", paddingRight:"30px"}}>
+                          No volverás a perderte en instrucciones que no recuerdas.
+                        </p>
+                    </Row>
+                </Row>
+              </Container>
             </Col>
             <Col md={4} style={{backgroundColor:"white", borderRadius:"8px", padding:"40px", marginBottom:"10%"}}>
               <Container >
