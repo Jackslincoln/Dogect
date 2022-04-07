@@ -19,11 +19,12 @@ export const Containerr = styled.div`
 
 export const Sidebarr = styled.div`
   background: #212121;
-  width: 250px;
+  width: 20%;
   height:100%;
   position:fixed;
   overflow: auto;
   padding: 0.25rem;
+
 `;
 
 export const Star = styled.div`

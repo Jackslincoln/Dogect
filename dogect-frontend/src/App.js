@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import {HomePage} from './components/pages/HomePage';
 import LoginPage from './components/pages/LoginPage';
 import SignupPage from "./components/pages/SignupPage";
+import Equipo from "./equipo/Equipo";
+
 
 import Sidebarx from './sidebar/index';
 
