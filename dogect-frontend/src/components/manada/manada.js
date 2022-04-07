@@ -3,6 +3,7 @@ import { Card, CardBody, CardHeader, CardImg, CardTitle, Container, Row, Col } f
 import { FormManada } from './formManada';
 import { ManadaDetail } from './manadaDetail';
 import { Link } from 'react-router-dom';
+import { Placeholder } from "./manadaPlaceholder"
 
 const TYPESHOW = "show";
 const TYPEEDIT = "edit";
@@ -21,10 +22,34 @@ export class Manada extends Component {
     };
   }
 
+  async componentDidMount() {
+    // if (this.props.data) {
+    //   this.setState({
+    //     status:true,
+    //     data: this.props.data
+    //   });
+    //   this.forceUpdate();
+    // }
+    // else if (this.props.id) {
+    //   const response = await fetch(
+    //     'http://localhost:3000/api/v1/manadas/${this.props.id}'
+    //   );
+    //   const respJson = await response.json();
+    //   if(respJson.success) {
+    //     this.setState({
+    //       status: true,
+    //       data: respJson.Data,
+    //     });
+    //     this.forceUpdate();
+    //   }
+    // }
+  }
+
   render() {
     const isEdit = this.state.type === TYPEEDIT;
     const isShow = this.state.type === TYPESHOW;
 
+    // return this.state.status === true ? (
     return (
       <Link to={"/landing"} style={{textDecoration:"none"}}>
         <Card className='card shadow-sm hover-overlay' data-mdb-ripple-color="light" style={{margin: "20px", borderRadius: "20px"}}>
@@ -56,7 +81,11 @@ export class Manada extends Component {
           </CardBody>
         </Card>
       </Link>
-
     )
+    //  : this.state.type === TYPEDELETE ? (
+    //   <div></div>
+    // ) : (
+    //   <Placeholder></Placeholder>
+    // )
   }
 }

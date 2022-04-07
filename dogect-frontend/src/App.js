@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbarl, EntraClick} from "./navbar";
+import { Navbarl} from "./navbar";
 import { Landing } from "./landing";
 import { Sidebar } from "./sidebar";
 import './App.css';
