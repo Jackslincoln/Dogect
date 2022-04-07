@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { Formik } from 'formik';
 import { Col, Container, Row, Button, Label, Input } from 'reactstrap';
+import { Link } from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faPen, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -97,6 +99,17 @@ export const HomePage = () => {
                   </Container>
                 </Row>
               </Row>
+            </Col>
+          </Row>
+
+          <Row className='d-flex justify-content-center'>
+            <Col>
+              <Label>
+                © 2022
+                <Link style={{color:"#C3B029"}} to={"/landing"}> Dogect</Link>
+                , Inc.
+              </Label>
+
             </Col>
           </Row>
          </Container>
