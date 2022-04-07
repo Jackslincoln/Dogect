@@ -1,14 +1,18 @@
 import React from 'react';
 import { useState } from 'react';
-import { Col, Container, Row, Button } from 'reactstrap';
+import { Formik } from 'formik';
+import { Col, Container, Row, Button, Label, Input } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faPen, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 import Modal from '../modals/modal';
+import { ContenedorFormulario } from './../styles/form.styles';
 import { ContenedorBotones, Boton, Contenido } from './../styles/modal.styles';
 import { Manada } from './../manada/manada';
 import ManadaList from './../manada/manadaList';
 import { ModalTitle } from 'react-bootstrap';
+import Formulario from './../forms/Formulario';
+import { styled } from 'styled-components';
 
 export const HomePage = () => {
   const [estadoModal1, cambiarEstadoModal1] = useState(false);
@@ -17,7 +21,9 @@ export const HomePage = () => {
 
   return (
     <div>
-        <img src="https://imgur.com/RPYyBqm.jpg" className="img-fluid" alt="Responsive image"/>
+      <div>
+        <img src="https://imgur.com/RPYyBqm.jpg" className="img-fluid" alt="Responsive image" />
+      </div>
 
         <Container className='w-75 container-fluid' >
           <Row>
@@ -103,10 +109,10 @@ export const HomePage = () => {
             footer={
               <Row>
                 <Col>
-                  <Button color="warning" outline onClick={() => cambiarEstadoModal1(!estadoModal1)}>Guardar cambios</Button>
+                  <Button type='submit' color="warning" outline onClick={() => cambiarEstadoModal1(!estadoModal1)}>Guardar cambios</Button>
                 </Col>
                 <Col>
-                  <Button outline onClick={() => cambiarEstadoModal1(!estadoModal1)}>Eliminar cuenta</Button>
+                  <Button  outline onClick={() => cambiarEstadoModal1(!estadoModal1)}>Eliminar cuenta</Button>
                 </Col>
               </Row>
             }
@@ -116,6 +122,37 @@ export const HomePage = () => {
             <Contenido>
               <h1>Editar perfil</h1>
               <img src="https://imgur.com/UU2uLQF.png" className="img-fluid" alt="Responsive image"/>
+              <Formik
+                onSubmit={() => {
+                  alert('Formulado enviado!')
+                }}
+              >
+                {({handleSubmit}) => (
+                  <ContenedorFormulario onSubmit={handleSubmit}>
+                    <div>
+                      <Label htmlFor='nombre'>Nombre :</Label>
+                      <Input type='text' id='nombre' name='nombre' placeholder='Nombre...'></Input>
+                    </div>
+                    <div>
+                      <Label htmlFor='correo'>Correo :</Label>
+                      <Input type='email' id='correo' name='correo' placeholder='Correo...'></Input>
+                    </div>
+                    <div>
+                      <Label htmlFor='contra'>Contraseña :</Label>
+                      <Input type='password' id='contra' name='contra' placeholder='Contraseña...'></Input>
+                    </div>
+                  </ContenedorFormulario>
+                )}
+              </Formik>
+              <Row>
+                <Col>
+                  <React.StrictMode>
+                    <div className='contenedor'>
+
+                    </div>
+                  </React.StrictMode>
+                </Col>
+              </Row>
             </Contenido>
           </Modal>
         {/*Crear Manada 1*/}
@@ -135,7 +172,24 @@ export const HomePage = () => {
             <Contenido>
               <h1>Crear manada</h1>
               <p>Una forma simple de trabajar junto a un grupo de personas como una gran familia</p>
-              <h2>*AQUI VA UN FORMS*</h2>
+              <Formik
+                onSubmit={() => {
+                  alert('Formulado enviado!')
+                }}
+              >
+                {({handleSubmit}) => (
+                  <ContenedorFormulario onSubmit={handleSubmit}>
+                    <div>
+                      <Label htmlFor='nombreManada'>Nombra tu manada :</Label>
+                      <Input type='text' id='nombreManada' name='nombre/manada' placeholder='Nombre...'></Input>
+                    </div>
+                    <div>
+                      <Label htmlFor='correo'>Añade una descripción :</Label>
+                      <Input type='textarea' id='correo' name='correo' placeholder='Descripción...' style={{fontSize:"14px"}}></Input>
+                    </div>
+                  </ContenedorFormulario>
+                )}
+              </Formik>
             </Contenido>
           </Modal>
         {/*Crear Manada 2*/}
@@ -159,7 +213,17 @@ export const HomePage = () => {
             <Contenido>
               <h1>Añade miembros a tu manada</h1>
               <p>Una forma simple de trabajar junto a un grupo de personas como una gran familia</p>
-              <h2>*AQUI VA UN FORMS*</h2>
+              <ContenedorFormulario>
+                      <Row>
+                      <Col md={9}>
+                        <Label htmlFor='nombreMiembro'>Busca a un miembro :</Label>
+                        <Input type='text' id='nombreMiembro' name='nombreMiembro' placeholder='Nombre...'></Input>
+                      </Col>
+                      <Col md={3} style={{marginTop:"30px"}}>
+                        <Button color="warning" outline>Añadir</Button>
+                      </Col>
+                      </Row>
+                  </ContenedorFormulario>
             </Contenido>
           </Modal>
 

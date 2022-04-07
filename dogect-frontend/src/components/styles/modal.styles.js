@@ -43,7 +43,7 @@ export const Contenido = styled.div`
 		vertical-align: top;
 		border-radius: 3px;
 		margin-top: 40px;
-
+    margin-bottom: 40px;
 	}
   p {
 		font-size: 14px;
@@ -51,6 +51,11 @@ export const Contenido = styled.div`
     padding: 10px;
 		margin-bottom: 20px;
 	}
+  Button {
+    border-radius: 20px;
+    font-size: 14px;
+    width: 150px;
+  }
 
 `;
 
@@ -68,7 +73,7 @@ export const Overlay = styled.div`
 `;
 
 export const ContenedorModal = styled.div`
-  width: 600px;
+  width: 700px;
   min-height: 100px;
   background: #fff;
   position: relative;
