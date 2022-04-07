@@ -11,8 +11,8 @@ import { ContenedorBotones, Boton, Contenido } from './../styles/modal.styles';
 import { Manada } from './../manada/manada';
 import ManadaList from './../manada/manadaList';
 import { ModalTitle } from 'react-bootstrap';
-import Formulario from './../forms/Formulario';
 import { styled } from 'styled-components';
+
 
 export const HomePage = () => {
   const [estadoModal1, cambiarEstadoModal1] = useState(false);
