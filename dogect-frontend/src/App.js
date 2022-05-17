@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import {HomePage} from './components/pages/HomePage';
 import LoginPage from './components/pages/LoginPage';
 import SignupPage from "./components/pages/SignupPage";
+import LandingPage from './components/pages/LandingPage';
 import Equipo from "./equipo/Equipo";
 
 
@@ -20,7 +21,7 @@ function App() {
      <Router>
       <Routes>
         <Route exact path="/" element={<HomePage/>}></Route>
-        <Route exact path="/landing" element={<Landing/>}></Route>
+        <Route exact path="/landing" element={<LandingPage/>}></Route>
         <Route exact path="/login" element={<LoginPage/>}></Route>
         <Route exact path="/signup" element={<SignupPage/>}></Route>
         <Route exact path="/equipo" element={<Equipo/>}></Route>
