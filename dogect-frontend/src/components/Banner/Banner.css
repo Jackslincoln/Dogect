@@ -1,0 +1,15 @@
+.banner {
+  background: url("https://cdn.wallpapersafari.com/50/22/kju2RW.jpg") center center;
+  height: 50vh;
+  position: relative;
+
+}
+
+.banner_info {
+  padding-top: 40vh;
+  padding-left: 60%;
+}
+
+.banner_info > button {
+  border-radius: 60px;
+}

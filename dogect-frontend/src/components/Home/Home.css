@@ -1,0 +1,8 @@
+.home_userInfo {
+  z-index: 10;
+}
+
+.home_section {
+  display: flex;
+  padding: 30px;
+}

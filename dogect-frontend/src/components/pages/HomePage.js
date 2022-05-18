@@ -10,10 +10,12 @@ import { faUsers, faPen, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import Modal from '../modals/modal';
 import { ContenedorFormulario } from './../styles/form.styles';
 import { ContenedorBotones, Boton, Contenido } from './../styles/modal.styles';
+import './../Home/Home';
+
 import { Manada } from './../manada/manada';
 import ManadaList from './../manada/manadaList';
-import { ModalTitle } from 'react-bootstrap';
-import { styled } from 'styled-components';
+import Banner from './../Banner/Banner';
+import Card from '../Card/Card';
 
 
 export const HomePage = () => {
@@ -22,224 +24,231 @@ export const HomePage = () => {
   const [estadoModal3, cambiarEstadoModal3] = useState(false);
 
   return (
-    <div>
-      <div>
-        <img src="https://imgur.com/RPYyBqm.jpg" className="img-fluid" alt="Responsive image" />
-      </div>
+    <div className='home'>
+      <Banner/>
 
-        <Container className='w-75 container-fluid' >
-          <Row>
-            <Col md={3}>
-              <Row style={{marginTop: "-80px"}}>
-                <Col className=" shadow p-3"
-                  style={{
-                    padding: "20px",
-                    borderRadius: "20px",
-                    backgroundColor: 'white',
-                  }}
-                >
-                  <Container>
-                    <Row className='d-flex justify-content-center'>
-                      <Col md={8} style={{padding: "15px"}}>
-                        <img src="https://imgur.com/UU2uLQF.png" className="img-fluid" alt="Responsive image" />
-                      </Col>
-                    </Row>
-                    <Row className='justify-content-center'>
-                      <b style={{fontSize: "30px", color: "#414141"}}>Nombre de Usuario</b>
-                      <p style={{color: "#949494"}}># manadas</p>
-                      <Col md={8} style={{marginBottom: "20px"}}>
-                        <ContenedorBotones >
-                          <Boton onClick={() => cambiarEstadoModal1(!estadoModal1)}>Editar perfil</Boton>
-                        </ContenedorBotones>
-                      </Col>
-                    </Row>
-                  </Container>
-                </Col>
-              </Row>
-            </Col>
-
-            <Col md={9} style={{marginBottom: "130px"}}>
-              <Row>
-                <Col md={4} className="d-flex align-items-start" style={{padding: "20px", marginLeft: "60px", marginTop:"30px"}}>
-                  <b  style={{fontSize: "36px", color: "#333333"}}>Mis manadas</b>
-                </Col>
-                <Col md={5} className="d-flex align-items-start" style={{paddingTop: "15px"}}>
-                  <ContenedorBotones >
-                   <Boton className='btn-sm' outline onClick={() => cambiarEstadoModal2(!estadoModal2)}>
-                      <FontAwesomeIcon icon={faUserPlus} /> Crear una manada
-                    </Boton>
-                  </ContenedorBotones>
-                </Col>
-                <Col md={2} className="d-flex align-items-start" style={{marginTop: "-50px"}}>
-                  <Button className='btn-circle' color='warning' outline style={{borderRadius: "60px"}}>
-                    <FontAwesomeIcon icon={faPen} />
-                  </Button>
-                </Col>
-
-                <Row style={{marginTop: "30px"}}>
-                  <Container>
-                    <Col>
-                      <Container>
-                        <Row>
-                          <Col md={6}>
-                            <Manada  />
-                          </Col>
-                          <Col md={6}>
-                            <Manada />
-                          </Col>
-                          <Col md={6}>
-                            <Manada />
-                          </Col>
-                          <Col md={6}>
-                            <Manada />
-                          </Col>
-                        </Row>
-                      </Container>
+      <Container className='home_content w-75 container-fluid' >
+        {/*--- Contenido de la pagina ---*/}
+        <Row>
+          {/*--- Info de usuario ---*/}
+          <Col className='home_userInfo' md={3}>
+            <Row style={{marginTop: "-80px"}}>
+              <Col className="shadow p-3"
+                style={{
+                  padding: "20px",
+                  borderRadius: "20px",
+                  backgroundColor: 'white',
+                }}
+              >
+                <Container>
+                  <Row className='d-flex justify-content-center'>
+                    <Col md={8} style={{padding: "15px"}}>
+                      <img src="https://imgur.com/UU2uLQF.png" className="img-fluid" alt="Responsive image" />
                     </Col>
-                  </Container>
-                </Row>
-              </Row>
-            </Col>
-          </Row>
+                  </Row>
+                  <Row className='justify-content-center'>
+                    <b style={{fontSize: "30px", color: "#414141"}}>Nombre de Usuario</b>
+                    <p style={{color: "#949494"}}># manadas</p>
+                    <Col md={8} style={{marginBottom: "20px"}}>
+                      <ContenedorBotones >
+                        <Boton onClick={() => cambiarEstadoModal1(!estadoModal1)}>Editar perfil</Boton>
+                      </ContenedorBotones>
+                    </Col>
+                  </Row>
+                </Container>
+              </Col>
+            </Row>
+          </Col>
 
-          <Row className='d-flex justify-content-center'>
+          {/*--- Contenido derecho ---*/}
+          <Col md={9} style={{marginBottom: "130px"}}>
+            {/*--- Titulo + Boton ---*/}
+            <Row>
+              <Col md={4} className="d-flex align-items-start" style={{padding: "20px", marginLeft: "60px", marginTop:"30px"}}>
+                <b  style={{fontSize: "36px", color: "#333333"}}>Mis manadas</b>
+              </Col>
+              <Col md={5} className="d-flex align-items-start" style={{paddingTop: "15px"}}>
+                <ContenedorBotones >
+                  <Boton className='btn-sm' outline onClick={() => cambiarEstadoModal2(!estadoModal2)}>
+                    <FontAwesomeIcon icon={faUserPlus} /> Crear una manada
+                  </Boton>
+                </ContenedorBotones>
+              </Col>
+
+              {/*--- Lista de manadas ---*/}
+              <Row>
+                <Col md={6}>
+                  <Card
+                    src="https://imgur.com/wkYmAFw.jpg"
+                    title="☼Insolaris☼"
+                    creatorImg="https://imgur.com/pGW2bf6.png"
+                    creator="Alessandra Muñoz"
+                    numUsers="30"
+                  />
+                </Col>
+                <Col md={6}>
+                  <Card
+                    src="https://miro.medium.com/max/1000/1*c-OSpkWa5UtyFU5P58DKDw.jpeg"
+                    title="Post"
+                    creatorImg="https://lastfm.freetls.fastly.net/i/u/770x0/639def2660f45584a8f9e3f9bfee1e23.jpg"
+                    creator="Björk Guðmundsdóttir"
+                    numUsers="30"
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col md={6}>
+                  <Card
+                    src="https://i.pinimg.com/originals/6c/be/e0/6cbee0926727bbfcf2354976e3fa8825.jpg"
+                    title="Heaven or Las Vegas"
+                    creatorImg="https://imgur.com/ch3eDTZ.jpg"
+                    creator="Cocteau Twins"
+                    numUsers="30"
+                  />
+                </Col>
+                <Col md={6}>
+                  <Card
+                    src="https://imgur.com/UKA6lJB.jpeg"
+                    title="Hunky Dory"
+                    creatorImg="https://uploads4.wikiart.org/00282/images//unnamed.jpg!Portrait.jpg"
+                    creator="David Bowie"
+                    numUsers="30"
+                  />
+                </Col>
+              </Row>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+
+
+      {/*--- MODALES ---*/}
+      {/*Editar Perfil*/}
+      <Modal
+        estado={estadoModal1}
+        cambiarEstado={cambiarEstadoModal1}
+        footer={
+          <Row>
             <Col>
-              <Label>
-                © 2022
-                <Link style={{color:"#C3B029"}} to={"/landing"}> Dogect</Link>
-                , Inc.
-              </Label>
-
+              <Button type='submit' color="warning" outline onClick={() => cambiarEstadoModal1(!estadoModal1)}>Guardar cambios</Button>
+            </Col>
+            <Col>
+              <Button  outline onClick={() => cambiarEstadoModal1(!estadoModal1)}>Eliminar cuenta</Button>
             </Col>
           </Row>
-         </Container>
-
-        {/*--- MODALES ---*/}
-        {/*Editar Perfil*/}
-         <Modal
-            estado={estadoModal1}
-            cambiarEstado={cambiarEstadoModal1}
-            footer={
-              <Row>
-                <Col>
-                  <Button type='submit' color="warning" outline onClick={() => cambiarEstadoModal1(!estadoModal1)}>Guardar cambios</Button>
-                </Col>
-                <Col>
-                  <Button  outline onClick={() => cambiarEstadoModal1(!estadoModal1)}>Eliminar cuenta</Button>
-                </Col>
-              </Row>
-            }
-            mostrarFooter={true}
-            mostrarOverlay={true}
+        }
+        mostrarFooter={true}
+        mostrarOverlay={true}
+      >
+        <Contenido>
+          <h1>Editar perfil</h1>
+          <img src="https://imgur.com/UU2uLQF.png" className="img-fluid" alt="Responsive image"/>
+          <Formik
+            onSubmit={() => {
+              alert('Formulado enviado!')
+            }}
           >
-            <Contenido>
-              <h1>Editar perfil</h1>
-              <img src="https://imgur.com/UU2uLQF.png" className="img-fluid" alt="Responsive image"/>
-              <Formik
-                onSubmit={() => {
-                  alert('Formulado enviado!')
-                }}
-              >
-                {({handleSubmit}) => (
-                  <ContenedorFormulario onSubmit={handleSubmit}>
-                    <div>
-                      <Label htmlFor='nombre'>Nombre :</Label>
-                      <Input type='text' id='nombre' name='nombre' placeholder='Nombre...'></Input>
-                    </div>
-                    <div>
-                      <Label htmlFor='correo'>Correo :</Label>
-                      <Input type='email' id='correo' name='correo' placeholder='Correo...'></Input>
-                    </div>
-                    <div>
-                      <Label htmlFor='contra'>Contraseña :</Label>
-                      <Input type='password' id='contra' name='contra' placeholder='Contraseña...'></Input>
-                    </div>
-                  </ContenedorFormulario>
-                )}
-              </Formik>
-              <Row>
-                <Col>
-                  <React.StrictMode>
-                    <div className='contenedor'>
+            {({handleSubmit}) => (
+              <ContenedorFormulario onSubmit={handleSubmit}>
+                <div>
+                  <Label htmlFor='nombre'>Nombre :</Label>
+                  <Input type='text' id='nombre' name='nombre' placeholder='Nombre...'></Input>
+                </div>
+                <div>
+                  <Label htmlFor='correo'>Correo :</Label>
+                  <Input type='email' id='correo' name='correo' placeholder='Correo...'></Input>
+                </div>
+                <div>
+                  <Label htmlFor='contra'>Contraseña :</Label>
+                  <Input type='password' id='contra' name='contra' placeholder='Contraseña...'></Input>
+                </div>
+              </ContenedorFormulario>
+            )}
+          </Formik>
+          <Row>
+            <Col>
+              <React.StrictMode>
+                <div className='contenedor'>
 
-                    </div>
-                  </React.StrictMode>
-                </Col>
-              </Row>
-            </Contenido>
-          </Modal>
-        {/*Crear Manada 1*/}
-          <Modal
-            estado={estadoModal2}
-            cambiarEstado={cambiarEstadoModal2}
-            footer={
-              <Row>
-                <Col>
-                  <Button color="warning" outline onClick={() => cambiarEstadoModal3(!estadoModal3)}>Siguiente</Button>
-                </Col>
-              </Row>
-            }
-            mostrarFooter={true}
-            mostrarOverlay={true}
-          >
-            <Contenido>
-              <h1>Crear manada</h1>
-              <p>Una forma simple de trabajar junto a un grupo de personas como una gran familia</p>
-              <Formik
-                onSubmit={() => {
-                  alert('Formulado enviado!')
-                }}
-              >
-                {({handleSubmit}) => (
-                  <ContenedorFormulario onSubmit={handleSubmit}>
-                    <div>
-                      <Label htmlFor='nombreManada'>Nombra tu manada :</Label>
-                      <Input type='text' id='nombreManada' name='nombre/manada' placeholder='Nombre...'></Input>
-                    </div>
-                    <div>
-                      <Label htmlFor='correo'>Añade una descripción :</Label>
-                      <Input type='textarea' id='correo' name='correo' placeholder='Descripción...' style={{fontSize:"14px"}}></Input>
-                    </div>
-                  </ContenedorFormulario>
-                )}
-              </Formik>
-            </Contenido>
-          </Modal>
-        {/*Crear Manada 2*/}
-        <Modal
-            estado={estadoModal3}
-            cambiarEstado={cambiarEstadoModal3}
-            footer={
-              <Row>
-                <Col>
-                  <Button outline onClick={() => cambiarEstadoModal3(!estadoModal3)}>Atras</Button>
-                </Col>
-                <Col>
-                  {/*en esta se tienen que cerrar las dos*/}
-                  <Button color="warning" outline onClick={() => cambiarEstadoModal3(!estadoModal3)}>Crear manada</Button>
-                </Col>
-              </Row>
-            }
-            mostrarFooter={true}
-            mostrarOverlay={false}
-          >
-            <Contenido>
-              <h1>Añade miembros a tu manada</h1>
-              <p>Una forma simple de trabajar junto a un grupo de personas como una gran familia</p>
-              <ContenedorFormulario>
-                      <Row>
-                      <Col md={9}>
-                        <Label htmlFor='nombreMiembro'>Busca a un miembro :</Label>
-                        <Input type='text' id='nombreMiembro' name='nombreMiembro' placeholder='Nombre...'></Input>
-                      </Col>
-                      <Col md={3} style={{marginTop:"30px"}}>
-                        <Button color="warning" outline>Añadir</Button>
-                      </Col>
-                      </Row>
-                  </ContenedorFormulario>
-            </Contenido>
-          </Modal>
+                </div>
+              </React.StrictMode>
+            </Col>
+          </Row>
+        </Contenido>
+      </Modal>
 
+      {/*Crear Manada 1*/}
+      <Modal
+        estado={estadoModal2}
+        cambiarEstado={cambiarEstadoModal2}
+        footer={
+          <Row>
+            <Col>
+              <Button color="warning" outline onClick={() => cambiarEstadoModal3(!estadoModal3)}>Siguiente</Button>
+            </Col>
+          </Row>
+        }
+        mostrarFooter={true}
+        mostrarOverlay={true}
+      >
+        <Contenido>
+          <h1>Crear manada</h1>
+          <p>Una forma simple de trabajar junto a un grupo de personas como una gran familia</p>
+          <Formik
+            onSubmit={() => {
+              alert('Formulado enviado!')
+            }}
+          >
+            {({handleSubmit}) => (
+              <ContenedorFormulario onSubmit={handleSubmit}>
+                <div>
+                  <Label htmlFor='nombreManada'>Nombra tu manada :</Label>
+                  <Input type='text' id='nombreManada' name='nombre/manada' placeholder='Nombre...'></Input>
+                </div>
+                <div>
+                  <Label htmlFor='correo'>Añade una descripción :</Label>
+                  <Input type='textarea' id='correo' name='correo' placeholder='Descripción...' style={{fontSize:"14px"}}></Input>
+                </div>
+              </ContenedorFormulario>
+            )}
+          </Formik>
+        </Contenido>
+      </Modal>
+
+      {/*Crear Manada 2*/}
+      <Modal
+        estado={estadoModal3}
+        cambiarEstado={cambiarEstadoModal3}
+        footer={
+          <Row>
+            <Col>
+              <Button outline onClick={() => cambiarEstadoModal3(!estadoModal3)}>Atras</Button>
+            </Col>
+            <Col>
+              {/*en esta se tienen que cerrar las dos*/}
+              <Button color="warning" outline onClick={() => cambiarEstadoModal3(!estadoModal3)}>Crear manada</Button>
+            </Col>
+          </Row>
+        }
+        mostrarFooter={true}
+        mostrarOverlay={false}
+      >
+        <Contenido>
+          <h1>Añade miembros a tu manada</h1>
+          <p>Una forma simple de trabajar junto a un grupo de personas como una gran familia</p>
+          <ContenedorFormulario>
+            <Row>
+              <Col md={9}>
+                <Label htmlFor='nombreMiembro'>Busca a un miembro :</Label>
+                <Input type='text' id='nombreMiembro' name='nombreMiembro' placeholder='Nombre...'></Input>
+              </Col>
+              <Col md={3} style={{marginTop:"30px"}}>
+                <Button color="warning" outline>Añadir</Button>
+              </Col>
+            </Row>
+          </ContenedorFormulario>
+        </Contenido>
+      </Modal>
       </div>
   );
 }

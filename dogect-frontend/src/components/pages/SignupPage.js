@@ -28,6 +28,7 @@ class SignupPage extends React.Component {
           </Row>
 
           <Row className='d-flex justify-content-center'>
+            {/*--- Texto izq ---*/}
             <Col md={4}>
               <Container>
                 <Row style={{marginBottom:"20px"}}>
@@ -71,6 +72,7 @@ class SignupPage extends React.Component {
                 </Row>
               </Container>
             </Col>
+            {/*--- Register form ---*/}
             <Col md={4} style={{backgroundColor:"white", borderRadius:"8px", padding:"40px", marginBottom:"10%"}}>
               <Container >
                 <Row>
@@ -83,10 +85,11 @@ class SignupPage extends React.Component {
                   <Input type="text" className='form-control form-rounded' placeholder='☺  Nombre...' style={{borderRadius: "20px", paddingLeft: "30px", paddingRight: "30px", fontSize: "14px", marginBottom: "15px"}}></Input>
                   <Input type="text" className='form-control form-rounded' placeholder='✎  Apellido...' style={{borderRadius: "20px", paddingLeft: "30px", paddingRight: "30px", fontSize: "14px", marginBottom: "15px"}}></Input>
                   <Input type="text" className='form-control form-rounded' placeholder='✉  Correo...' style={{borderRadius: "20px", paddingLeft: "30px", paddingRight: "30px", fontSize: "14px", marginBottom: "15px"}}></Input>
+                  <Input type="password" className='form-control form-rounded' placeholder='✱  Contraseña...' style={{borderRadius: "20px", paddingLeft: "30px", paddingRight: "30px", fontSize: "14px", marginBottom: "15px"}}></Input>
                 </Row>
                 <Row className="justify-content-center" >
                   <Link to={"/"}>
-                    <Button color="warning" size="lg" outline style={{borderRadius: "20px", width:"80%", fontSize: "14px" }}>
+                    <Button color="warning" size="lg" outline style={{borderRadius: "20px", width:"80%", fontSize: "14px", marginTop: "-10px"}}>
                       Comenzar
                     </Button>
                   </Link>

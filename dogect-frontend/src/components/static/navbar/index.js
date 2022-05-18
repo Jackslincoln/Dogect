@@ -15,24 +15,25 @@ export const Navbarl = (
 }
 ) =>
 (
-        <div>
-            <Ulx>
-                <Lix>
-                  <a href="/landing">
-                    <Img src="https://i.imgur.com/CZPzCt0.png" />
-                  </a>
-                </Lix>
-                <Lix2>
-                    <Divbuttons>
-                      <a href='/login' style={{textDecoration:"none"}}>
-                        <Button1 >ENTRA</Button1>
-                      </a>
-                      <a href='/signup' style={{textDecoration:"none"}}>
-                        <Button2  href="/signup">REGISTRATE</Button2>
-                      </a>
-                    </Divbuttons>
+  <div>
+    <Ulx>
+      <a href='/landing'>
+      <Lix>
+          <Img src="https://i.imgur.com/CZPzCt0.png" />
+      </Lix>
+      </a>
 
-                </Lix2>
+      <Lix2>
+        <Divbuttons>
+          <a href='/login' style={{textDecoration:"none"}}>
+            <Button1 >ENTRA</Button1>
+          </a>
+          <a href='/signup' style={{textDecoration:"none"}}>
+            <Button2  href="/signup">REGISTRATE</Button2>
+          </a>
+        </Divbuttons>
+
+      </Lix2>
                 {/* Mira primero lo voy a poner asi a lo berserk
                 <Lix2>
                     <Divbuttons>
@@ -40,8 +41,8 @@ export const Navbarl = (
                     <Button2  href={path2}>{texto2}</Button2>
                     </Divbuttons>
                 </Lix2> */}
-            </Ulx>
-        </div>
+      </Ulx>
+    </div>
 
     //<Col><Button variant={color} href={path}><h1>{text}</h1> <FontAwesomeIcon icon = {icons[iconName]}></FontAwesomeIcon></Button></Col>
 );
