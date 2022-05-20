@@ -48,16 +48,6 @@ class LoginPage extends React.Component {
               </Row>
             </Col>
           </Row>
-          <Row className='d-flex justify-content-center'>
-            <Col>
-              <Label>
-                © 2022
-                <Link style={{color:"#C3B029"}} to={"/landing"}> Dogect</Link>
-                , Inc.
-              </Label>
-
-            </Col>
-          </Row>
         </Container>
       </div>
 

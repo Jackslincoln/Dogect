@@ -1,0 +1,14 @@
+.navImg {
+  max-height: 6vh;
+  margin-left: 120px;
+}
+
+.divBtnNav {
+  margin-right: 120px;
+}
+
+.divGrowNav {
+  flex-grow: 1;
+}
+
+

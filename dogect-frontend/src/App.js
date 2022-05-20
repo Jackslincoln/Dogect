@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Landing } from "./landing";
 import { Sidebar } from "./sidebar";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,17 +6,14 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import {HomePage} from './components/pages/HomePage';
 import LoginPage from './components/pages/LoginPage';
 import SignupPage from "./components/pages/SignupPage";
+import NotFoundPage from './components/pages/NotFoundPage';
 import LandingPage from './components/pages/LandingPage';
 import Equipo from "./equipo/Equipo";
 
-
-import Sidebarx from './sidebar/index';
-import Home from './components/Home/Home';
 import Footer from './components/static/Footer/Footer';
 import { Helmet } from "react-helmet";
-import NotFoundPage from './components/pages/NotFoundPage';
-import Layout from './components/layouts/Layout';
-import { Navbarl } from './components/static/navbar/index';
+import Navbarl  from './components/static/navbar/index';
+
 
 function App() {
   return (
@@ -30,9 +26,9 @@ function App() {
       </Helmet>
 
      <Router>
-      <Layout>
+       <Navbarl/>
         <Routes>
-          <Route exact path="/" element={<HomePage/>}></Route>
+          <Route exact path="/" element={<HomePage />} />
           <Route exact path="/landing" element={<LandingPage/>}></Route>
           <Route exact path="/login" element={<LoginPage/>}></Route>
           <Route exact path="/signup" element={<SignupPage/>}></Route>
@@ -40,7 +36,7 @@ function App() {
 
           <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
-      </Layout>
+        <Footer/>
      </Router>
 
 
