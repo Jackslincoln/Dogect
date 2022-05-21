@@ -53,7 +53,7 @@ export class Manada extends Component {
     return (
       <Link to={"/equipo"} style={{textDecoration:"none"}}>
         <Card className='card shadow-sm hover-overlay' data-mdb-ripple-color="light" style={{margin: "20px", borderRadius: "20px"}}>
-          <img class="card-img-top img-fluid" src="https://imgur.com/NisoA1O.jpg" alt="Card image cap Responsive image"/>
+          <img className="card-img-top img-fluid" src="https://imgur.com/NisoA1O.jpg" alt="Card image cap Responsive image"/>
           <CardBody>
             <Container>
               <Row>

@@ -7,7 +7,7 @@ function Card({ src, title, creatorImg, creator, numUsers}) {
   return (
     <Link to={'/equipo'} style={{textDecoration:"none"}}>
       <div className='card'>
-        <img class="card-img-top img-fluid" src={src} alt="Card image cap Responsive image"/>
+        <img className="card-img-top img-fluid" src={src} alt="Card image cap Responsive image"/>
         <div className='card_body'>
           <Container>
             <Row>
@@ -15,7 +15,7 @@ function Card({ src, title, creatorImg, creator, numUsers}) {
             </Row>
             <Row>
               <Col md={2}>
-                <img src={creatorImg} class="card_creatorImg img-fluid" alt="Responsive image"/>
+                <img src={creatorImg} className="card_creatorImg img-fluid" alt="Responsive image"/>
               </Col>
               <Col md={9}>
                 <p>{creator}</p>

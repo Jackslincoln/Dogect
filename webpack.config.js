@@ -5,7 +5,9 @@ const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
   mode: isProd ? 'production' : 'development',
+  entry: path.resolve(__dirname, 'src') + './dogect-frontend/src/index.js',
   output: {
+    path: path.resolve(__dirname, "../src/dist"),
     filename: 'app.bundle.js',
   },
   plugins: [

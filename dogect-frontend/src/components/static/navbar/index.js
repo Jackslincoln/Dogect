@@ -1,35 +1,33 @@
 import * as React from 'react';
-import { AppBar, Box, Toolbar, Typography, Button, IconButton, makeStyles, Badge } from "@material-ui/core";
+import { AppBar, Box, Toolbar, Typography, Button, IconButton, makeStyles, Badge, Tooltip, Avatar, Menu, MenuItem, Link } from "@material-ui/core";
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
+import useAuth from './../../../auth/UseAuth';
+import { Navigate } from 'react-router-dom';
 
 import "./navStyles.css"
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    marginBottom: "7rem"
-  },
-
-  AppBar: {
-    backgroundColor: "whitesmoke",
-    boxShadow: "none"
-  },
-
-  grow: {
-    flexGrow: 1
-  },
-
-  Button: {
-    marginLeft: theme.spacing(2)
-  },
-
-  image: {
-    marginLeft: "10px"
-  }
-}))
+const settingsStrings = ['Mis manadas', 'Cerrar sesión'];
 
 export default function Navbarl() {
-  const classes = useStyles();
+
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  const { logout } = useAuth();
+
+  const logoutOtro = () => {
+    logout();
+    handleCloseUserMenu();
+  }
+
+  const { user } = useAuth();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -45,17 +43,49 @@ export default function Navbarl() {
             <img className='navImg' src='https://imgur.com/CZPzCt0.png'/>
           </IconButton>
           <div className='divGrowNav'/>
-          <Typography variant="h6" color="textPrimary" component="div" sx={{ flexGrow: 1 }}>
-            Guest
-          </Typography>
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="Remy Sharp" src={user?.img??"https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}  style={{marginRight:"10px", height:"25px", width:"25px"}}/>
+                    <Typography variant="h6" color="textPrimary" component="div" sx={{ flexGrow: 1 }}>
+                    {user?.name??"Guest"}
+                  </Typography>
+                  </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                <MenuItem onClick={logoutOtro}>Cerrar sesion</MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>Mi cuenta</MenuItem>
+              </Menu>
+            </Box>
+
+
           <IconButton>
             <Badge badgeContent={2} color="secondary">
               <NotificationsNoneIcon fontSize='medium' style={{color:"grey", marginLeft:"10px"}}/>
             </Badge>
           </IconButton>
           <div className='divBtnNav'>
-            <Button color="inherit" style={{color:"black", marginLeft:"10px"}}>Inicia sesión</Button>
-            <Button color="inherit" style={{color:"black", border:"1px solid #ffc30f", marginLeft:"10px"}}>Regístrate</Button>
+            <Link href="/login">
+              <Button color="inherit" style={{color:"black", marginLeft:"10px"}}>Inicia sesión</Button>
+            </Link>
+            <Link href="/signup">
+              <Button color="inherit" style={{color:"black", border:"1px solid #ffc30f", marginLeft:"10px"}}>Regístrate</Button>
+            </Link>
           </div>
 
         </Toolbar>
@@ -76,6 +106,7 @@ export default function Navbarl() {
 // import {Ulx, Lix, Lix2, Img, Button1, Button2, Divbuttons} from './styles';
 
 // //import logotipo from '/images/logotipo.png'
+
 
 
 

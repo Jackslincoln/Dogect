@@ -13,6 +13,8 @@ import Equipo from "./equipo/Equipo";
 import Footer from './components/static/Footer/Footer';
 import { Helmet } from "react-helmet";
 import Navbarl  from './components/static/navbar/index';
+import AppRouter from './routers/AppRouter';
+import AuthProvider from "./auth/AuthProvider";
 
 
 function App() {
@@ -25,7 +27,19 @@ function App() {
         <meta name="description" content="El administrador de tareas" />
       </Helmet>
 
-     <Router>
+      <AuthProvider>
+        <AppRouter></AppRouter>
+      </AuthProvider>
+
+
+
+
+
+
+
+
+
+     {/* <Router>
        <Navbarl/>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
@@ -37,7 +51,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
         <Footer/>
-     </Router>
+     </Router> */}
 
 
 

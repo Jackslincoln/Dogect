@@ -66,7 +66,7 @@ class LandingPage extends React.Component {
                   <Col md={6}>
                     <Card style={{boxShadow:"0 10px 16px 0 rgba(0,0,0,0.2)", padding:"30px", height:"40vh"}}>
                       <CardBody style={{alignItems:"center"}}>
-                        <img class="img-fluid rounded-circle w-50 " src="https://imgur.com/BtPv6Qk.jpg" alt="Card image cap" style={{borderRadius:"300px", boxShadow:"0 5px 8px 0 rgba(0,0,0,0.2)"}}/>
+                        <img className="img-fluid rounded-circle w-50 " src="https://imgur.com/BtPv6Qk.jpg" alt="Card image cap" style={{borderRadius:"300px", boxShadow:"0 5px 8px 0 rgba(0,0,0,0.2)"}}/>
                         <h3 style={{color:"black", fontSize:"20px", marginTop:"30px", marginBottom:"-20px"}}>Omar Dávila</h3>
                         <Label style={{textAllign:"center", color:"#F96332", fontSize:"16px"}}>Programador</Label>
                         <p style={{color:"#666666", fontSize:"14px", textAlign:"center", marginTop:"10px",  marginBottom:"60px"}}>"¡Espera, no somos cabernícolas! <br/> Tenemos tecnología..."</p>
@@ -77,7 +77,7 @@ class LandingPage extends React.Component {
                   <Col md={6}>
                   <Card style={{boxShadow:"0 10px 16px 0 rgba(0,0,0,0.2)", padding:"30px", height:"40vh"}}>
                       <CardBody style={{alignItems:"center"}}>
-                        <img class="img-fluid rounded-circle w-50 " src="https://imgur.com/klLMN2Q.jpg" alt="Card image cap" style={{borderRadius:"300px", boxShadow:"0 5px 8px 0 rgba(0,0,0,0.2)"}}/>
+                        <img className="img-fluid rounded-circle w-50 " src="https://imgur.com/klLMN2Q.jpg" alt="Card image cap" style={{borderRadius:"300px", boxShadow:"0 5px 8px 0 rgba(0,0,0,0.2)"}}/>
                         <h3 style={{color:"black", fontSize:"20px", marginTop:"30px", marginBottom:"-20px"}}>Alessandra Muñoz</h3>
                         <Label style={{textAllign:"center", color:"#F96332", fontSize:"16px"}}>Diseñadora</Label>
                         <p style={{color:"#666666", fontSize:"14px", textAlign:"center", marginTop:"10px",  marginBottom:"60px"}}>

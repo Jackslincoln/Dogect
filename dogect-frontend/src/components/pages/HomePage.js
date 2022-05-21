@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Formik } from 'formik';
-import { Col, Container, Row, Button, Label, Input } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Col, Container, Row, Button, Label, Input, FormText } from 'reactstrap';
+import { Form, Alert } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faPen, faUserPlus } from '@fortawesome/free-solid-svg-icons';
@@ -12,16 +13,52 @@ import { ContenedorFormulario } from './../styles/form.styles';
 import { ContenedorBotones, Boton, Contenido } from './../styles/modal.styles';
 import './../Home/Home';
 
-import { Manada } from './../manada/manada';
-import ManadaList from './../manada/manadaList';
 import Banner from './../Banner/Banner';
 import Card from '../Card/Card';
+import useAuth from './../../auth/UseAuth';
+import changeNameResolver from '../../validations/changeNameResolver';
 
 
 export const HomePage = () => {
-  const [estadoModal1, cambiarEstadoModal1] = useState(false);
-  const [estadoModal2, cambiarEstadoModal2] = useState(false);
-  const [estadoModal3, cambiarEstadoModal3] = useState(false);
+  const [estadoModal1, cambiarEstadoModal1] = useState(false);  //UserInfo
+  const [estadoModal2, cambiarEstadoModal2] = useState(false);  //CreateManada1
+  const [estadoModal3, cambiarEstadoModal3] = useState(false);  //CreateManada2
+  const [estadoModal4, cambiarEstadoModal4] = useState(false);  //DeleteUser
+
+  const openDeleteModal = () => {
+    cambiarEstadoModal4(true);
+    cambiarEstadoModal1(false);
+  }
+  const closeDeleteModal = () => cambiarEstadoModal4(false);
+  const handleDelete = () => {
+    //Peticiones
+    //closeDeleteModal
+    logout();
+  }
+
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    watch,
+    formState : { errors }
+  } = useForm({
+      reValidateMode:"onChange",
+    });
+
+
+  const onSubmit = (formData) => {
+    alert('cambios guardados exitosamente');
+  }
+
+  const { user } = useAuth();
+  const { logout } = useAuth();
+
+  useEffect(() => {
+    const subs = watch((value, {name, type}) => console.log(value, name, type));
+    return ( ) => subs.unsubscribe ();
+  }, [watch, user]);
+
 
   return (
     <div className='home'>
@@ -43,12 +80,12 @@ export const HomePage = () => {
                 <Container>
                   <Row className='d-flex justify-content-center'>
                     <Col md={8} style={{padding: "15px"}}>
-                      <img src="https://imgur.com/UU2uLQF.png" className="img-fluid" alt="Responsive image" />
+                      <img src={user?.img??"https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"} className="img-fluid" alt="Responsive image" style={{borderRadius:"60px"}}/>
                     </Col>
                   </Row>
                   <Row className='justify-content-center'>
-                    <b style={{fontSize: "30px", color: "#414141"}}>Nombre de Usuario</b>
-                    <p style={{color: "#949494"}}># manadas</p>
+                    <b style={{fontSize: "30px", color: "#414141"}}>{user?.name}</b>
+                    <p style={{color: "#949494", textAlign:"center"}}># manadas</p>
                     <Col md={8} style={{marginBottom: "20px"}}>
                       <ContenedorBotones >
                         <Boton onClick={() => cambiarEstadoModal1(!estadoModal1)}>Editar perfil</Boton>
@@ -130,10 +167,10 @@ export const HomePage = () => {
         footer={
           <Row>
             <Col>
-              <Button type='submit' color="warning" outline onClick={() => cambiarEstadoModal1(!estadoModal1)}>Guardar cambios</Button>
+              <Button type='submit' color="warning" outline onClick={handleSubmit(onSubmit)}>Guardar cambios</Button>
             </Col>
             <Col>
-              <Button  outline onClick={() => cambiarEstadoModal1(!estadoModal1)}>Eliminar cuenta</Button>
+              <Button  outline onClick={openDeleteModal}>Eliminar cuenta</Button>
             </Col>
           </Row>
         }
@@ -142,38 +179,60 @@ export const HomePage = () => {
       >
         <Contenido>
           <h1>Editar perfil</h1>
-          <img src="https://imgur.com/UU2uLQF.png" className="img-fluid" alt="Responsive image"/>
-          <Formik
-            onSubmit={() => {
-              alert('Formulado enviado!')
-            }}
-          >
-            {({handleSubmit}) => (
-              <ContenedorFormulario onSubmit={handleSubmit}>
-                <div>
-                  <Label htmlFor='nombre'>Nombre :</Label>
-                  <Input type='text' id='nombre' name='nombre' placeholder='Nombre...'></Input>
-                </div>
-                <div>
-                  <Label htmlFor='correo'>Correo :</Label>
-                  <Input type='email' id='correo' name='correo' placeholder='Correo...'></Input>
-                </div>
-                <div>
-                  <Label htmlFor='contra'>Contraseña :</Label>
-                  <Input type='password' id='contra' name='contra' placeholder='Contraseña...'></Input>
-                </div>
-              </ContenedorFormulario>
-            )}
+          <img src={user?.img??"https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"} className="img-fluid" alt="Responsive image" style={{borderRadius:"90px"}}/>
+
+          <Formik onSubmit={handleSubmit(onSubmit)}   >
+              <ContenedorFormulario className='formulario'>
+                  <div>
+                    <Label htmlFor='name'>Nombre :</Label>
+                    <input {...register("name", {required:"Error: nombre obligatorio"})}/>
+                    {errors.name && (
+                      <div >
+                        {errors.name.message}
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <Label htmlFor='correo'>Correo :</Label>
+                    <Input type='email' id='correo' name='correo' placeholder='Correo...'></Input>
+                  </div>
+                  <div>
+                    <Label htmlFor='contra'>Contraseña :</Label>
+                    <Input type='password' id='contra' name='contra' placeholder='Contraseña...'></Input>
+                  </div>
+                </ContenedorFormulario>
+
           </Formik>
           <Row>
             <Col>
               <React.StrictMode>
-                <div className='contenedor'>
-
-                </div>
+                <div className='contenedor'></div>
               </React.StrictMode>
             </Col>
           </Row>
+        </Contenido>
+      </Modal>
+
+      {/*Eliminar cuenta*/}
+      <Modal
+        estado={estadoModal4}
+        cambiarEstado={cambiarEstadoModal4}
+        footer={
+          <Row>
+            <Col>
+              <Button type='submit' color="warning" outline onClick={handleDelete}>Aceptar</Button>
+            </Col>
+            <Col>
+              <Button  outline onClick={() => cambiarEstadoModal4(!estadoModal4)}>Cancelar</Button>
+            </Col>
+          </Row>
+        }
+        mostrarFooter={true}
+        mostrarOverlay={true}
+      >
+        <Contenido>
+          <h1>Eliminar cuenta</h1>
+          <p>¿Estas seguro de querer eliminar tu cuenta? <br/> Se perderán tus datos.</p>
         </Contenido>
       </Modal>
 
